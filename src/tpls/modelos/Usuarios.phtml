@@ -1,0 +1,70 @@
+<?php if ( $this->estePerfil() < 3 ): ?>
+<form id="frmData" action="./" method="post">
+	<div>
+		<table width="503" border="0">
+		  <tr>
+		    <td>Nombres</td>
+		    <td>
+		      <input type="text" name="nombres[]" id="nombres_x" />
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>Apellidos</td>
+		    <td>
+		      <input type="text" name="apellidos[]" id="apellidos_x" />
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>e - mail</td>
+		    <td><input type="email" name="mail[]" id="mail_x" /></td>
+		  </tr>
+		  <tr>
+		    <td>Perfil</td>
+		    <td>
+		      <?php echo $this->obtenerPerfilesUsuarios(); ?>
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>Estado</td>
+		    <td>
+		      <?php echo $this->obtenerEstados(); ?>
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>Usuario</td>
+		    <td>
+		      <input type="text" name="usuario[]" id="usuario_x" />
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>Clave</td>
+		    <td>
+		      <input type="password" name="clave[]" id="clave_x" />
+		    </td>
+		  </tr>
+		</table>
+	</div>
+	
+	<input type="hidden" name="creado[]" value="<?php echo date("Y-m-d h:i:s"); ?>" />
+	<input type="hidden" name="pageid" value="modelos/<?php echo basename( __FILE__ ); ?>" />
+	<input type="hidden" name="jsmenuid" value="<?php echo $_POST[ "jsmenuid" ]; ?>" />
+	<input class="boton_guardar" type="submit" name="cmd" value="Guardar Usuarios" />
+</form>
+<?php endif; ?>
+
+<div id="frmVista" class="frmVistaOculta" >
+	<?php 
+	echo $this->obtenerTablaConLlaves() ; 
+	?>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	<?php if ( $this->estePerfil() > 2 ): ?>
+		$(".menuOpciones .ico_agregar, .menuOpciones .ico_actualizar").each(function(i, v){
+			$(this).hide("fast");
+		});
+		$( "#frmVista" ).fadeIn("slow");		
+	<?php endif; ?>
+});
+</script>

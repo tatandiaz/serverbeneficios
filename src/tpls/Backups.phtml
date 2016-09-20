@@ -1,0 +1,107 @@
+<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8"/>
+<?php
+date_default_timezone_set('America/Bogota');
+$def = 1;
+if ( isset( $_POST["cmd"] ) ) {
+	if( $_POST["cmd"] == md5("limpiarrespuestas") ){
+		$def = $_POST["mesas"];
+	}
+}
+?>
+<div class="cajabackups">
+	
+	<h2>Crear Backup:</h2>
+	<form action="./index.php" method="post" >
+		<label for="nombreflbk">Nombre del backup:</label>
+		<input id="nombreflbk" type="text" name="nombrebk" />
+		<p align="right">
+		<input type="submit" value="Crear" />
+		</p>
+		
+		<input type="hidden" name="cmd" value="<?php echo md5("crearbackup"); ?>" />
+		<input type="hidden" name="pageid" value="Backups.phtml" />
+	</form>
+	
+	<hr />
+	<form action="./index.php" method="post">
+	
+		<h2>Backups Actuales: </h2>
+		<select size="10" class="listaFlBks" id="cmb_lista_bkps" name="cmb_lista_bkps">
+			<?php foreach ( $this->listarBackUps() as $id => $vl ): ?>
+			<option value="<?php echo $vl; ?>"><?php echo $vl; ?> (<?php echo date ("F d Y H:i:s", filemtime($this->getFldbk() . DIRECTORY_SEPARATOR . $vl)); ?>)</option>
+			<?php endforeach; ?>
+		</select>
+		
+		<h3>Nombre Backup:</h3>
+		<ul class="ls_archivos_bk">
+			<li><h4 id="lbl_actual_file">-</h4></li>
+		</ul>
+	
+		<input type="submit" value="Restaurar Backup" />
+		<input type="hidden" name="cmd" value="<?php echo md5("usarbackup"); ?>" />
+		<input type="hidden" name="pageid" value="Backups.phtml" />
+	</form>
+</div>
+
+
+<div class="cajabackups">
+	<h2>Limpiar todas las respuestas</h2>
+	<form action="./index.php" method="post" id="frmResetMesa">
+		<p>
+			<?php echo $this->obtenerMesas($def); ?>
+			<input type="button" value="Limpiar" onclick="confirmarEvento('#frmResetMesa', 'Los datos guardados de esta mesa serán borrados. \n¿Desea continuar?');" />
+		</p>
+		<input type="hidden" name="cmd" value="<?php echo md5("limpiarrespuestas"); ?>" />
+		<input type="hidden" name="pageid" value="Backups.phtml" />
+	</form>
+	
+	<?php if( isset( $_POST["cmd"] ) ) : ?>
+	<?php 	if( $_POST["cmd"] == md5("limpiarrespuestas") ) :?>
+	<hr />
+	<textarea rows="" cols="" class="logResLimpiar"><?php echo implode("\n", $this->obtenerEstadoLimpiarMesas() ) ; ?></textarea>
+	<?php 	endif; ?>
+	<?php endif; ?>
+</div>
+
+<div class="cajabackups">
+	<h2>Restaurar valores de f&aacute;brica</h2>
+	<form action="./index.php" method="post" id="frmResetDefault">
+		<p>
+			<input type="button" value="RESTAURAR" onclick="confirmarEvento('#frmResetDefault', 'Todos los datos serán borrados. \n¿Desea continuar?');" />
+		</p>
+		<input type="hidden" name="cmd" value="<?php echo md5("valoresfabrica"); ?>" />
+		<input type="hidden" name="pageid" value="Backups.phtml" />
+	</form>
+	
+	<?php if( isset( $_POST["cmd"] ) ) : ?>
+	<?php 	if( $_POST["cmd"] == md5("limpiarrespuestas") ) :?>
+	<hr />
+	<textarea rows="" cols="" class="logResLimpiar"><?php echo implode("\n", $this->obtenerEstadoLimpiarMesas() ) ; ?></textarea>
+	<?php 	endif; ?>
+	<?php endif; ?>
+</div>
+
+<script type="text/javascript">
+// Confirmar Operaciones
+var confirmarEvento = function( frm, msj ){
+	var bMsj = confirm( msj );
+	if( bMsj ){
+		var o = document.querySelector(frm);
+		o.submit()
+	}
+};
+
+//Backups List Actions
+var agregarEventos = function(){
+	jQuery("#cmb_lista_bkps").on("change",function(e){
+		var lbl_fl = jQuery("#lbl_actual_file");
+		var o = jQuery( this );
+		lbl_fl.text( jQuery( "#" + o.attr("id") + " option:selected" ).text() );
+	});
+};
+
+jQuery(document).ready(function(){
+	jQuery(".menuOpciones").hide();
+	agregarEventos();
+});
+</script>

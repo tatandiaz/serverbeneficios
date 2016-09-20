@@ -1,0 +1,85 @@
+<form class="" action="" method="POST" > 
+	<div>
+    <?php
+    $servidor = "localhost";
+    $basedatos = "mqaapps";
+    $usuario = "mqaapps";
+    $contrasena = "CDE34RFV";  
+    
+ $mysqli = new mysqli($servidor, $usuario,$contrasena, $basedatos);
+if ($mysqli -> connect_errno) {
+die( "Fallo la conexión a MySQL: (" . $mysqli -> mysqli_connect_errno() 
+. ") " . $mysqli -> mysqli_connect_error());
+}
+else
+echo "Conexion a DB establecida"; 
+    ?>
+<fieldset>
+  <legend>COMPROMISO</legend>     
+    Compromiso:
+    <br/>
+    <input type="text" name="nameCompromiso" placeholder="Ingrese el compromiso" />
+    <br/>
+    Responsable:
+    <br/>
+    <input type="text" name="nameResponsable" placeholder="Ingrese el responsable" />
+    <br/>
+    Cargo:
+    <br/>
+    <input type="text" name="nameCargo" placeholder="Ingrese el cargo" />
+    <br/>
+    Fecha:
+    <br/>
+    <input type="text" name="nameFecha" placeholder="Ingrese la Fecha"/>
+    <br/>
+</fieldset>
+
+  <input type="submit" value="Guardar Compromiso"></input>
+  <input type="button" id="btnMostrar" class="btninfo" onclick="mostrartabla()"  value="Ver Compromisos"></input>
+</form>
+
+<?php
+
+$sql = "INSERT INTO compromiso (compromiso, responsable, cargo, fecha)
+VALUES ('PrubaCompromiso','PruebaResponsable','PruebaCargo','PruebaFecha')";
+
+?>
+
+<form id='tablaOculta' style='display:none;' method="POST">
+    <table border="1" class="estilotabla1" >
+      <tr class="trcolumnas1">
+        <th>Responsable</th>
+        <th>Compromiso</th>
+        <th>Cargo</th>
+        <th>Fecha</th>
+      </tr>
+      
+      <?php
+$sql = "SELECT * FROM compromiso";
+$result = $mysqli->query($sql);
+    ?>
+<?php while($columna = mysqli_fetch_array($result)):?>
+      <tr>
+        <td>
+          <?php echo $columna['compromiso'] ?>
+        </td>
+        <td>
+          <?php echo $columna['responsable'] ?>
+        </td>
+        <td>
+          <?php echo $columna['cargo'] ?>
+        </td>
+        <td>
+          <?php echo $columna['fecha'] ?>
+        </td>
+      </tr>
+      <?php endwhile; ?>
+    </table>
+</form>
+
+<script type="text/javascript">
+  function mostrartabla(){
+  document.getElementById('tablaOculta').style.display ='block';}
+</script>
+
+<!--Comentario-->

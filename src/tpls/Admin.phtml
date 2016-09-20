@@ -1,0 +1,310 @@
+<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8"/>
+<div class="CapasAdmin">
+	<h2>Crear Mesa</h2>
+	<ul class="Mesa">
+		<li class="labaseMesa">
+			<table>
+				<tbody>
+					<tr>
+						<td><label><b>Nombre:</b></label> <input type="text" name="nombre" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+		<li class="plusMesa" onclick="agregarDatos(this, '.labaseMesa');">Agregar</li>
+	</ul>
+</div>
+
+<div class="CapasAdmin">
+	<h2>Crear Categor&iacute;as</h2>
+
+	<ul class="Categorias">	
+	<?php $tieneCats = $this->obtenerCategorias() ; ?>
+	<?php if( sizeof( $tieneCats ) > 0 ):	// Si tiene categorías existentes las agrega ?>
+	<?php $primero = true; ?>
+	
+		<li class="labaseCate" style="display: none;">
+			<table>
+				<tbody>
+					<tr>
+						<th><label><b>Nombre:</b></label></th>
+						<th><label><b>Color:</b></label></th>
+						<th><label><b>Depende de:</b></label></th>
+						<th><label><b>Tipo:</b></label></th>
+						<th><label><b>Orden:</b></label></th>
+					</tr>
+					<tr>
+						<td class="clsNombreCat"><input type="text" name="nombre" /></td>
+						<td class="clsColorCat"><input type="color" name="color" value="#ff0000" /></td>
+						<td class="clsDepende" align="center"><input type="hidden" name="dependencia" value="0" /></td>
+						<td class="clsCurTipoCat"><?php echo $this->obtenerTiposCategoria(); ?></td>
+						<td><input type="number" name="orden" value="0" style="width: 40px;" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+	
+	<?php $refCats = $this->obtenerTiposCatEnArreglo(); ?>
+	<?php $depCats = $this->obtenerRefDeCategorias(); ?>
+	<?php 	foreach ($tieneCats as $key => $value) : ?>
+		<li class="labaseCate">
+			<table width="426">
+				<tbody>
+					<tr>
+						<th><label><b>Nombre:</b></label></th>
+						<th><label><b>Color:</b></label></th>
+						<th><label><b>Depende de:</b></label></th>
+						<th width="85"><label><b>Tipo:</b></label></th>
+						<th><label><b>Orden:</b></label></th>
+					</tr>
+					<tr>
+						<td class="clsNombreCat"><input type="text" name="nombre" value="<?php echo $value["nombre"] ?>" /></td>
+						<td class="clsColorCat"><input type="color" name="color" value="<?php echo $value["color"] ?>" /></td>
+						
+						<?php if( $value["dependencia"] > 0 ) : //Muestra el nombre y el color de la dependencia ?>
+						<td class="clsDepende" align="center">
+							<input type="button" name="dependencia" value="<?php echo $depCats[ $value["dependencia"] ]["nombre"]; ?>" style="background-color: <?php echo $depCats[ $value["dependencia"] ]["color"]; ?>; border: solid 1px #fff; font-weight: bold;" class="btnGetDepend" />
+						</td>
+						<?php else: ?>
+						<td class="clsDepende" align="center">
+							<input type="hidden" name="dependencia" value="0" />
+						</td>
+						<?php endif; ?>
+						
+						<td class="clsCurTipoCat">
+							<?php if( !$primero ) : ?>
+							<?php 	echo $this->obtenerTiposCategoria($value["tiposcategoria_id"]); ?>
+							<?php else :?>
+							<label><b><?php 	echo $refCats[ $value["tiposcategoria_id"] ]["nombre"]; ?></b></label>
+							<input type="hidden" name="tiposcategoria_id" value="<?php echo $value["tiposcategoria_id"]; ?>">
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if( !$primero ) : ?>
+							<input type="number" name="orden" value="<?php echo $value["orden"] ?>" style="width: 40px;" />
+							<?php else: ?>
+							<?php echo $value["orden"]; ?>
+							<input type="hidden" name="orden" value="<?php echo $value["orden"]; ?>">
+							<?php endif;?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<?php if( !$primero ) : ?>
+			<div onclick="quitarDatos(this);" class="lessMesa">[X]</div>
+			<?php endif; ?>
+		
+		
+		</li>
+	<?php 	$primero = false; ?>
+	<?php 	endforeach; ?>
+	<?php else: ?>
+		<li class="labaseCate">
+			<table>
+				<tbody>
+					<tr>
+						<th><label><b>Nombre:</b></label></th>
+						<th><label><b>Color:</b></label></th>
+						<th><label><b>Depende de:</b></label></th>
+						<th><label><b>Tipo:</b></label></th>
+						<th><label><b>Orden:</b></label></th>
+					</tr>
+					<tr>
+						<td class="clsNombreCat"><input type="text" name="nombre" /></td>
+						<td class="clsColorCat"><input type="color" name="color" value="#ff0000" /></td>
+						<td class="clsDepende" align="center">
+							&nbsp;
+							<input type="hidden" name="dependencia" value="0" />
+						</td>
+						<td class="clsCurTipoCat"><?php echo $this->obtenerTiposCategoria(); ?></td>
+						<td><input type="number" name="orden" value="0" style="width: 40px;" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+	<?php endif; ?>
+		<li class="plusMesa" onclick="agregarDatos(this, '.labaseCate');">Agregar</li>
+	</ul>
+</div>
+
+<div class="CapasAdmin" style="width: 190px;">
+	<h2>Guardar Datos</h2>
+	<p align="justify">Al hacer clic en el bot&oacute;n <b>"Crear Nuevo Taller"</b>, se borrar&aacute;n todos los datos almacenados
+		anteriormente. Si est&aacute; seguro que ya no necesita m&aacute;s la
+		informaci&oacute;n o si ya hizo un backup de los datos, proceda con el
+		bot&oacute;n de <b>"Crear Nuevo Taller"</b>.</p>
+	<input id="crearTaller" type="button" value="Crear Nuevo Taller" class="btnCrearMesasCates" />
+</div>
+
+<form id="frmMkTaller" method="post" action="./index.php">
+	<input type="hidden" name="cmd" value="<?php echo md5("mkTaller"); ?>" />
+	<input type="hidden" name="pageid" value="Admin.phtml" />
+</form>
+
+
+<div id="dialog-message" title="Guardando" style="display: none;">
+	<p id="txt-msj-salvando">
+		<b class="cargandoCaja">&nbsp;</b><b>Creando taller...</b>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+var agregarDatos = function(padre, base){
+	var o = jQuery(padre);
+	var base = jQuery(base);
+	o.before("<li>" + base.html() + " <div onclick=\"quitarDatos(this);\" class=\"lessMesa\">[X]</div></li>");
+	EventoCambioTipoCate();
+};
+
+var quitarDatos = function(padre){
+	if(confirm("Desea eliminar este registro?")){
+		var o = jQuery(padre).parent();
+		o.remove();
+	}
+};
+
+var EventoCambioTipoCate = function(){
+	var baseHTMLInput = "<input type=\"button\" name=\"dependencia\" value=\"&nbsp;\" style=\"background-color: #fff; border: solid 1px #fff; font-weight: bold;\" class=\"btnGetDepend\" />";
+	var baseHTMLInputHidden = "<input type=\"hidden\" name=\"dependencia\" value=\"0\" /> ";
+	var o = jQuery(".lstTipoDeCate");
+	o.on("change", function(){
+		var oS = jQuery( this );
+		var o1 = oS.parent().parent();
+		var okGetDepen = o1.find(".clsDepende").each(function(i,j){
+			var objDepParent = jQuery(j);
+			if(oS.val() == 1){
+				objDepParent.html( baseHTMLInputHidden );
+			}
+			else{
+				objDepParent.html(baseHTMLInput);
+			}
+		});
+		listaDeCateParaSelect();
+	});
+};
+
+var listaDeCateParaSelect = function(){
+	var CONST_VAL_PERMITIDO = 1;
+	var o = jQuery(".btnGetDepend");
+	o.on("click", function(){
+		var o1 = jQuery(this);
+		var delO = jQuery(".existCats");
+		delO.remove();
+
+		var ulEl = document.createElement("ul");
+		ulEl.setAttribute("class", "existCats");
+		var datos = jQuery(".Categorias li:visible table");
+		datos.each(function(i,j){
+			var oI = jQuery( j ).find(".clsCurTipoCat select").first();
+			var tipo = typeof oI;
+			if( tipo == "object" ){
+				var idTpCat = oI.val();
+				if( typeof idTpCat != "undefined"){
+					if( idTpCat == CONST_VAL_PERMITIDO ){
+						var oTr = oI.parent().parent();
+						var txtPro = oTr.find(".clsNombreCat input").first();
+						var clrPro = oTr.find(".clsColorCat input").first();
+						var txtLiOpc = document.createTextNode( txtPro.val() );
+						var liEl = document.createElement("li");
+						liEl.setAttribute( "style", "background-color: " + clrPro.val() + ";" );
+						liEl.appendChild( txtLiOpc );
+						ulEl.appendChild( liEl );
+
+						liEl.addEventListener("click", function(){
+							var esteLi = jQuery( this );
+							var txtLi = esteLi.text();
+							o1.css("background-color", esteLi.css("background-color"));
+							o1.val( txtLi );
+
+							var delOTmp = jQuery(".existCats");
+							delOTmp.remove();
+							
+						}, false);
+						
+					}
+				}
+			}
+		});
+
+		var liElCerr = document.createElement("li");
+		liElCerr.setAttribute( "style", "background-color: #FFFFFF;" );
+		liElCerr.appendChild( document.createTextNode("Cerrar") );
+		liElCerr.addEventListener("click", function(){
+			var delOTmp = jQuery(".existCats");
+			delOTmp.remove();
+		}, false);
+		ulEl.appendChild( liElCerr );
+
+		o1.after(ulEl);
+	});
+};
+
+var datosFormularios = function(ul){
+	var uEle = ul.find("li table:visible");
+	var oDatos = {};
+
+	uEle.each(function(i,j){
+
+		var tb = jQuery(j);
+		var registro = {};
+
+		tb.find(":input").each(function(k,l){
+			var el = jQuery(l);
+			registro[ el.attr("name") ] = el.val();
+		});
+		
+		oDatos[ i ] = registro;
+	});
+	
+	return oDatos;
+};
+
+var fnCrearTaller = function(){
+	var ct = jQuery("#crearTaller");
+	ct.on("click", function(){
+		var cpDatos = jQuery(".CapasAdmin ul");
+
+		var datosFrm = {};
+		
+		cpDatos.each(function(i,j){
+			var estO = jQuery( j );
+
+			var inEle = datosFormularios( estO );
+			
+			datosFrm[ estO.attr("class") ] = inEle;
+		});
+
+		var res = JSON.stringify(datosFrm);
+		var objMej = jQuery("#dialog-message");
+
+		objMej.dialog({
+		      modal: true,
+		      buttons: {
+		        Ok: function() {
+		          jQuery( this ).dialog( "close" );
+		        }
+		      }
+		});
+		
+		jQuery.post("./index.php", { cmd : "<?php echo md5("mkTaller"); ?>", pageid : "Admin.phtml", frmd : res }, function(data){
+			var oTxtMsj = jQuery("#txt-msj-salvando");
+			oTxtMsj.html( data );
+		} );
+		
+	});
+};
+
+var EventosExtras = function(){
+	EventoCambioTipoCate();
+	listaDeCateParaSelect();
+	fnCrearTaller();
+};
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery(".menuOpciones").hide();
+	EventosExtras();
+});
+</script>

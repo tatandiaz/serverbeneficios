@@ -1,0 +1,913 @@
+﻿.body {
+    font-family:Arial;
+    font-size: 12px;
+    background:#1c3044;
+    color:#ffffff;
+    height: 100%;
+	margin: 0px;
+	width: 100%;
+}
+.fotterMQA {
+    color: #000;
+    width: 1360px;
+    height: 75px;
+    left: 3px;
+    bottom: 0;
+    position: fixed;
+    top: 690px;
+    bottom: 0;
+    background: #fff;
+    text-align: center;
+    font-family:Verdana;
+    
+
+}
+.btnPDFentrevistas {
+    position: relative;
+    left: 1280px;
+    top: -370px;
+    width: 50px;
+    height: 50px;
+}
+.btnPDFcompromiso {
+    position: relative;
+    left: 1295px;
+    top: -290px;
+    width: 50px;
+    height: 50px;
+}
+.btnEdit {
+    height:18px;
+    width:18px;
+    position: relative;
+    
+}
+.styleFromModificacion {
+    position: relative;
+    left: 400px;
+    top: 100px;
+    width: 600px;
+    border:none;
+}
+.styleFromModificacionEntrevista{
+    position: relative;
+    left: 400px;
+    top: 100px;
+    width: 600px;
+    border:none;
+} 
+.styleFromImpacto {
+    padding: 20px;
+    background: #1c3044;
+    position: relative;
+    top: 270px ;
+    left: 70px;
+    width: 20px;
+    border: none;
+    font-size: 12px;
+}
+.styleFromImpactophtml {
+    padding: 20px;
+    background: #1c3044;
+    position: relative;
+    top: 110px ;
+    left: 70px;
+    width: 20px;
+    border: none;
+    font-size: 12px;
+}
+.styleFromPrioridadphtml{
+    padding: 20px;
+    background: #1c3044;
+    position: relative;
+    top: 100px ;
+    left: 70px;
+    width: 20px;
+    border: none;
+    font-size: 12px;
+}
+.styleFromPrioridad{
+    padding: 20px;
+    background: #1c3044;
+    position: relative;
+    top: 270px ;
+    left: 70px;
+    width: 20px;
+    border: none;
+    font-size: 12px;
+}
+.modificar {
+    width:20px;
+}
+.celdaResponsable {
+    width:100px;
+}
+.imagen {
+    position:absolute;
+    left:180px;
+    top:42px; 
+}
+.labelComp {
+    width: 100%;
+    padding-left: 1%;
+    padding-top: 0%;
+    padding-right: 1%;
+    padding-bottom: 6%;
+    font-size-adjust: initial;
+    font-size: 15px;
+}
+.labelCompEdit {   
+    width:100%;
+    padding-left:1%;
+    padding-top:0%;
+    padding-right:1%;
+    padding-bottom:6%;
+    font-size-adjust:initial;
+    font-size:15px;
+}
+.styleFrom {
+    position:absolute;
+    top:220px;
+    left:50px;
+    padding:20px;
+    background:#1c3044;
+    position: relative;
+    top: 270px;
+    width:30%;
+    border:none;
+    font-size: 12px;
+}
+.styleFromEntrevistas{
+    position:absolute;
+    top:220px;
+    left:50px;
+    padding:20px;
+    background:#1c3044;
+    position: relative;
+    top: 175px;
+    width:30%;
+    border:none;
+    font-size: 12px;
+}
+.styleFromCompromiso{
+    position:absolute;
+    top:220px;
+    left:50px;
+    padding:20px;
+    background:#1c3044;
+    position: relative;
+    top: 175px;
+    width:30%;
+    border:none;
+    font-size: 12px;
+
+}
+.styleFromEstrategiaphtml{
+    position:absolute;
+    top:220px;
+    left:50px;
+    padding:20px;
+    background:#1c3044;
+    position: relative;
+    top: 175px;
+    width:30%;
+    border:none;
+    font-size: 12px;
+}
+.styleFromResponsables {
+    padding: 20px;
+    background: #1c3044;
+    position: relative;
+    top: 170px;
+    left:70px;
+    width: 20px;
+    border: none;
+    font-size: 12px;
+}
+.styleFromResponsablesphtml{
+    padding: 20px;
+    background: #1c3044;
+    position: relative;
+    top: 55px;
+    left:70px;
+    width: 20px;
+    border: none;
+    font-size: 12px;
+}
+.CamposResponsables {
+    padding:10px;
+    width:386px;
+    font-size: 16px;
+}
+.CamposEstrategiaNombrephtml{
+    padding:10px;
+    width:410px;
+    font-size: 16px;
+}
+.CamposResponsableNombre {
+    padding:10px;
+    width:410px;
+    font-size: 16px;
+}
+.CamposPrioridadNombre{
+    padding:10px;
+    width:403px;
+    font-size: 16px;
+}
+.CamposPrioridadNombrephp{
+    padding:10px;
+    width:402px;
+    font-size: 16px;
+}
+.TitleResponsables {
+    font-size:30px;
+    position:relative;
+    top: 135px;
+    left:175px;
+}
+.TitleResponsablesphtml {
+    font-size:30px;
+    position:relative;
+    top: 40px;
+    left:175px;
+}
+.CamposImpacto{
+    padding:10px;
+    width:402px;
+    font-size: 16px;
+}
+.CamposImpactoNombre{
+    padding:10px;
+    width:403px;
+    font-size: 16px;
+}
+.CamposImpactoNombrephtml{
+    padding:10px;
+    width:380px;
+    font-size: 16px;
+}
+.CamposPrioridad{
+    padding:10px;
+    width:402px;
+    font-size: 16px;
+}
+.TitleImpacto{
+    font-size:30px;
+    position:relative;
+    top: 230px;
+    left: 220px;
+}
+.TitleImpactophtml{
+    font-size:30px;
+    position:relative;
+    top: 65px;
+    left:220px;
+}
+.TitlePrioridad{
+    font-size:30px;
+    position:relative;
+    top: 245px;
+    left: 220px;
+
+}
+.TitlePrioridadphtml{
+    font-size:30px;
+    position:relative;
+    top: 70px;
+    left:210px;
+}
+.titleModificarCompromiso {
+    font-size:30px;
+    position:relative;
+    top: 90px;
+    left: 470px;
+}
+.titleModificarEntrevista{
+    font-size:30px;
+    position:relative;
+    top: 90px;
+    left: 510px;
+}
+.TitleCliente {
+    font-size:30px;
+    position:relative;
+    top: 230px;
+    left:95px;
+}
+.TitleEstrategia {
+    font-size:30px;
+    position:relative;
+    top: 230px;
+    left: 70px;
+}
+.stylebtn {
+    position:absolute;
+    top:140px;
+    padding:0.1%;
+    width:99%;
+    background:#E5E7E9;
+    border-color:#000000;
+    border-radius: 5px;
+}
+.styLabels{
+    width:200px;
+}
+.labelFecha {
+    padding:10px;
+    width: 409px;
+}
+.StyleStrong {
+    font-size:12px;
+}
+.btnGuardarImpacto{
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #5F6061;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    width: 200px;
+    position: relative;
+    left: -6px;
+    top: 20px;
+    font-weight:bold;
+    color:white;
+}
+.btnGuardarImpacto:hover {
+    background:#0386d1;
+    padding:10px;
+}
+.btnGuardarPrioridad{
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #5F6061;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    width: 200px;
+    position: relative;
+    left: -6px;
+    top: 20px;
+    font-weight:bold;
+    color:white;
+}
+.btnGuardarPrioridad:hover {
+    background:#0386d1;
+    padding:10px;
+}
+.btnGuardarCompromiso { 
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #5F6061;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;   
+    border:none;
+    width: 200px;
+    position: relative;
+    left: -13px;
+    top: 20px;
+    font-weight:bold;
+    color:white;
+}
+.btnGuardarCompromiso:hover {
+    background:#0386d1;
+    padding:10px;
+}
+.btnVerImpacto {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 20px;
+    left: -8px;
+    width: 200px;
+    font-weight:bold;
+    color:white;
+}
+.btnVerImpacto:hover {  
+    background:#5F6061;
+    padding:10px;
+}
+.btnVerPrioridad {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 20px;
+    left: -8px;
+    width: 200px;
+    font-weight:bold;
+    color:white;
+}
+.btnVerPrioridad:hover {
+    background:#5F6061;
+    padding:10px;
+}
+.btnVerCompromisos {
+
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 20px;
+    left: -8px;
+    width: 200px;
+    font-weight:bold;
+    color:white;
+}
+.btnVerCompromisos:hover {
+    background:#5F6061;
+    padding:10px;
+}
+.btnModificarCompromiso{
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 10px;
+    left: 170px;
+    width: 250px;
+    font-weight:bold;
+    color:white;
+}
+.btnModificarCompromisos:hover {
+    background:#5F6061;
+    padding:10px;
+}
+.btnModificarEntrevista{
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 10px;
+    left: 170px;
+    width: 250px;
+    font-weight:bold;
+    color:white;
+}
+.btnModificarEntrevista:hover {
+    background:#5F6061;
+    padding:10px;
+}
+.btnGuardarResponsables {   
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #5F6061;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    width: 200px;
+    position: relative;
+    left: -4px;
+    top: 20px;
+    font-weight:bold;
+    color:white;
+}
+.btnGuardarResponsables:hover {
+     background:#0386d1;
+     padding:10px;   
+}
+.btnVerResponsables{
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 20px;
+    left: 2px;
+    width: 200px;
+    font-weight:bold;
+    color:white;
+}
+.btnVerResponsables:hover {      
+    background:#5F6061;
+    padding:10px;
+}
+.btnGuardarEstrategia {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #5F6061;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    width: 200px;
+    position: relative;
+    left: -12px;
+    top: 20px;
+    font-weight:bold;
+    color:white;
+}
+.btnGuardarEstrategia:hover {
+    background:#0386d1;
+    padding:10px;
+}
+.btnVerEstrategia {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 20px;
+    left: -7px;
+    width: 200px;
+    font-weight:bold;
+    color:white;
+}
+.btnVerEstrategia:hover{
+    background:#5F6061;
+    padding:10px;
+}
+.btnReturn {
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: -1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding: 10px;
+    width: 1107px;
+    position: absolute;
+    left: 56px;
+    top: 41px;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+}
+.btnReturn:hover {
+    background:#797D7F;
+    color: #FFF;
+    padding:10px;
+}
+.btnGuardarEntrevista {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #5F6061;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    width: 200px;
+    position: relative;
+    left: -13px;
+    top: 20px;
+    font-weight:bold;
+    color:white;
+}
+.btnGuardarEntrevista:hover {
+    background:#0386d1;
+    padding:10px;    
+}
+.btnVerEntrevista {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 20px;
+    left: -8px;
+    width: 200px;
+    font-weight:bold;
+    color:white;
+}
+.btnVerEntrevista:hover {
+    background:#5F6061;
+    padding:10px;
+}
+.btnGuardarCategoriaCliente {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #5F6061;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    width: 200px;
+    position: relative;
+    left: -12px;
+    top: 20px;
+    font-weight:bold;
+    color:white;  
+}
+.btnGuardarCategoriaCliente:hover {
+    background:#0386d1;
+    padding:10px;    
+}
+.btnVercategoriacliente {
+    margin-bottom:1em;
+    margin-left:1em;
+    margin-right:-1em;
+    background: #0386d1;
+    line-height: 2;
+    text-align: center;
+    transition: all 1s;
+    padding:10px;
+    border:none;
+    position: relative;
+    top: 20px;
+    left: -6px;
+    width: 200px;
+    font-weight:bold;
+    color:white;
+}
+.btnVercategoriacliente:hover{
+    background:#5F6061;
+    padding:10px;
+}
+.tablaEstrategia {
+    background:#1c3044;
+    padding:90%;
+    width:50%;
+    position:absolute;
+    top: 245px;
+    left: 403px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left;   
+}
+.tablaEstrategiaphp{
+    background:#1c3044;
+    padding:90%;
+    width:50%;
+    position:absolute;
+    top: 193px;
+    left: 516px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left;  
+}
+.tablaCategoriaEstrategia{
+    background:#1c3044;
+    padding:90%;
+    width:50%;
+    position:absolute;
+    top: 330px;
+    left: 300px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left;  
+}
+.tabla {
+    background: #1c3044;
+    padding:90%;
+    width:50%;
+    position:absolute;
+    top: 261px;
+    left: 610px;
+    border-radius: 5px;
+  	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left;   
+    height:42px;
+}
+.tablaCatCliente {
+    background: #1c3044;
+    padding:90%;
+    width:50%;
+    position:absolute;
+    top: 190px;
+    left: 545px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left; 
+}
+.tablaEstrategia {
+    background: #1c3044;
+    padding:90%;
+    width:50%;
+    position:absolute;
+    top: 330px;
+    left: 320px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left; 
+}
+.tablaPrioridad{
+     background: #1c3044;
+    padding:90%;
+    width:50%;
+    position:absolute;
+    top: 227px;
+    left: 520px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left; 
+}
+.selectEntrevistas {
+    padding:12px;
+    width:409px;
+}
+.selectEntrevistasModificacion{
+    padding:12px;
+    width:600px;
+    font-size: 16px;
+}
+.labelEntrevistas {
+    padding:10px;
+    width:409px;
+    font-size: 16px;
+}
+.tablaEntrevistas {
+    background:#1c3044;
+    padding:90%;
+    width:60%;
+    position:absolute;
+    top:235px;
+    left:530px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+	border:1px solid #000000;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size:12px;   
+    text-align: left; 
+}
+.StyleBotonEliminar {
+    background:#E74C3C;
+    font-weight:bold;
+    border-radius:100px;
+    border:none;
+    height: 20px;
+    width: 21px;
+}
+.CeldaEliminar {
+    text-align: center;
+    width:1%;  
+}
+.celdaEntrevista {
+    width:200%;
+}
+.TitleCompromiso {
+    font-size:30px;
+    position:relative;
+    top: 135px;
+    left: 180px;
+}
+.TitleVerCatCliente{
+    font-size:30px;
+    position:relative;
+    top: 200px;
+    left: 400px;
+}
+.tablaCompromisos {
+      width: 805px;
+    font-size: 14px;   
+}
+.encabezados {
+    text-align: center;  
+    background: #0386d1; 
+    height: 42px;
+    font-size: smaller;
+}
+.labelEntrevista {
+    padding:25%;
+    width:100%;
+    padding-left:1%;
+    padding-top:0%;
+    padding-right:1%;
+    padding-bottom:30%;
+    font-size-adjust:initial;
+}
+.camposCliente {
+    padding:10px;
+    width:410px;
+    font-size:16px;
+}
+.camposCatEstrategia {
+    padding:10px;
+    width:410px;
+    font-size:16px;
+}
+.labelPlaceholder {
+    padding:10px;
+    width:410px;
+    font-size:16px;
+}
+.labelPlaceholderModificacion {
+    padding:10px;
+    width:600px;
+    font-size:16px;
+}
+#scrolltabla{
+    
+    width:1000px;
+    height:1000px;
+}
+
+#opciones div{
+
+    display:none;
+
+
+}
+
+#div1 {
+   overflow-y: scroll;
+    height: 450px;
+    width: 825px;
+    position: absolute;
+    top: 210px;
+    left: 530px;
+    
+   
+}
+
+

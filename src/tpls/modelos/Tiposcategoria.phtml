@@ -1,0 +1,34 @@
+<form id="frmData" action="./" method="post" > 
+	<div>
+    <table border="0" class="tbComun">
+      <tbody>
+        <tr>
+          <th>
+            <label for="id_x">Id</label>
+          </th>
+          <td>Lista datos</td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="0" class="tbComun">
+      <tbody>
+        <tr>
+          <th>
+            <label for="nombre_x">Nombre</label>
+          </th>
+          <td>
+            <input type="text" name="nombre[]" id="nombre_x" class="camposEntrada">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div> 
+	<input type="hidden" name="id[]" id="id_x" value="" /> 
+	<input type="hidden" name="pageid" value="modelos/<?php echo basename( __FILE__ ); ?>" /> 
+	<input type="hidden" name="jsmenuid" value="<?php echo $_POST[ "jsmenuid" ]; ?>" /> 
+  	<input class="boton_guardar" type="submit" name="cmd" value="Guardar Tiposcategoria" />
+    
+  </form> 
+<div id="frmVista" class="frmVistaOculta" > 
+	Sin datos</div>

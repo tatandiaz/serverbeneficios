@@ -1,0 +1,58 @@
+<?php //Singleton::_modelos(); ?>
+<?php if( strlen( $this->getMensaje() ) > 0 ) : ?>
+	<div class="msj_contenedor">
+		<div class="msj_texto">
+      <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8"/>		
+			<table style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td>
+							<div>
+								<label><?php echo $this->getMensaje(); ?></label>
+								<br />
+								<input id="btnmsj" type="button" value="Cerrar" />
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+<?php endif; ?>
+
+<table class="tbdatos">
+  <tr>
+    <td align="center">
+    
+		<form action="./index.php" method="post" >
+			<table border="0" cellspacing="0" cellpadding="0" width="300">
+				<thead>
+					<tr>
+						<th><label for="uu">Usuario</label></th>
+						<th><label for="pp">Clave</label></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input id="uu" type="text" name="usuario" autocomplete="off" /></td>
+						<td><input id="pp" type="password" name="clave" /></td>
+					</tr>
+					
+					<tr>
+						<td>&nbsp;</td>
+						<td align="right"><input type="submit" name="cmd" value="Autenticar" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="hidden" name="pageid" value="<?php echo (isset($_REQUEST["pageid"]) ? $_REQUEST["pageid"] : "") ?>" />
+		</form>    
+    
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+jQuery("#btnmsj").on("click", function(){
+	jQuery(".msj_contenedor").fadeOut("slow");
+});
+</script>

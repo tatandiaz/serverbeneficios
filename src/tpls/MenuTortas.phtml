@@ -1,0 +1,153 @@
+<?php $v1 = $this->pastelInicial();
+$totalMesas = 0;
+$def = 1;
+if ( isset( $_POST["cmd"] ) ) {	
+	$def = $_POST["mesas"];
+	$v1 = $this->obtenerDatosTortas();
+	$tmpMes = $this->pastelInicial($def);
+	if( $def != 0){
+		if(isset($tmpMes[0])){
+			$totalMesas = $tmpMes[0]["value"];
+		}
+	}
+}
+?>
+<center>
+  <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8"/>
+	<table>
+		<tbody>
+			<tr>
+				<td align="center">
+					
+					<form action="./index.php" method="post" >
+						<table>
+							<tbody>
+								<tr>
+									<td align="left"><label for="mesas"><b style="font-size: 15px;">Mesa:</b></label></td>
+								</tr>
+								<tr>
+									<td align="left"><?php echo $this->obtenerMesas($def); ?></td>
+								</tr>
+								<tr>
+									<td align="left">
+										<input type="submit" value="Consultar" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<input type="hidden" name="cmd" value="pastelmesa" />
+						<input id="pageid" type="hidden" name="pageid" value="MenuTortas.phtml" />
+					</form>
+					
+				</td>
+			</tr>
+		
+			<tr>
+				<td align="left">
+
+					<table >
+						<tbody>
+							<tr>
+								<td>
+									<div style="background-color:  #1c3044;">
+										<h2 style="font-size: 18px;">Procesos por mesa:</h2>
+										<ul style="list-style-type: none; padding: 0px 0px;">
+										<?php foreach ($v1 as $key => $value) :?>
+										<?php $vlLabel = trim(utf8_decode( $value["label"] )); ?>
+                  	<?php  $vlT_rev = (strlen( $vlLabel ) > 0 ? $vlLabel : "No revisados"); ?> 
+										<li style="font-size: 15px; margin: 5px 0px;"><div style="background-color: <?php echo $value["color"]; ?>; width: 10px; height: 10px; display: inline-block;"></div> <?php echo $vlT_rev;   ?>: <?php echo $value["value"]; ?></li>
+										<?php endforeach; ?>
+										</ul>
+										<!-- <h2 align="right"><?php echo $totalMesas; ?> Procesos evaluados</h2> -->
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</td>
+
+				<td align="left">
+					<label></label>
+					<div id="canvas-holder">
+						<canvas id="chart-area" width="400" height="400"/>
+					</div>
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</center>
+
+<?php 
+$res2 = $this->obtenerDatosTablero($def);
+?>
+
+<?php if ( isset( $_POST["cmd"] ) ) : ?>
+
+<br /><br />
+
+<table width="100%">
+	<tbody>
+		
+		<tr>
+		<?php 
+   
+    
+    foreach ( $res2["r1"] as $id => $vl ) : ?>
+      <!--Escribe el titulo de la tabla con su respectivo color-->
+			<th bgcolor="<?php echo $vl->getColor(); ?>"><h2><?php echo $vl->getNombre(); ?></th>
+		<?php endforeach; ?>
+		</tr>
+    <tr>
+			<?php  foreach ( $res2["r1"] as $id => $vl ) : ?>
+      
+			<td valign="top">
+				<ul>        
+          
+				<?php foreach ( $res2["r2"] as $id2 => $vl2 ) : ?>
+          
+					<?php	if( $vl2->getCategorias_id() == $vl->getId() ) : ?>
+					<li>
+            <!--Escribe el proceso en cada columna-->
+						<?php echo $vl2->getProceso(); ?>
+            
+						<?php if( $vl->getDependencia() > 0 || $vl2->getCategorias_id() == 1 ) : ?>
+						<ul>
+              <!--Escribe el nombre del nuevo proceso-->
+							<li><?php  echo $vl2->getSugerencia(); ?></li>
+						</ul>
+						<?php endif; ?>
+					</li>
+					<?php 	endif; ?>
+          <?php endforeach; ?>
+				</ul>
+			</td>
+			<?php endforeach; ?>	
+		</tr>
+	
+	</tbody>
+</table>
+
+<br /><br />
+
+<?php endif; ?>
+
+
+<?php $jdt = json_encode($v1); ?>
+	<script>
+		var pieData = (<?php echo $jdt; ?>);
+
+			window.onload = function(){
+				var ctx = document.getElementById("chart-area").getContext("2d");
+				window.myPie = new Chart(ctx).Pie(pieData);
+			};
+	</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery(".menuOpciones").hide();
+});
+</script>

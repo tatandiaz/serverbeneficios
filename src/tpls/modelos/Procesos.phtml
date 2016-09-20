@@ -1,0 +1,107 @@
+<form id="frmData" action="./" method="post" > 
+	<div> 
+		<table border="0" class="tbComun"> 
+			<tbody> 
+				<tr> 
+					<th><label for="proceso_x"></label></th> 
+					<td><input type="text" name="proceso[]" id="proceso_x" class="camposEntradaProceso" placeholder="PROCESO NUEVO"></td> 
+				</tr> 
+			</tbody> 
+		</table> 
+
+		<table border="0" class="tbComun"> 
+			<tbody> 
+				<tr> 
+					<th><label for="mesas_id_x">MESA:</label></th> 
+					<td>
+						<?php echo $this->obtenerMesas(); ?>
+					</td> 
+				</tr> 
+			</tbody> 
+		</table>
+		
+		<input type="hidden" name="sugerencia[]" id="sugerencia_x" value=" " />
+		<input type="hidden" name="fecha[]" id="fecha_x" value="<?php echo date("Y-m-d h:i:s"); ?>" /> 
+		<input type="hidden" name="categorias_id[]" id="categorias_id_x" value="0" />
+		<input type="hidden" name="talleres_id[]" id="talleres_id_x" value="1" />
+	</div> 
+	
+	<input type="hidden" name="id[]" id="id_x" value="" /> 
+	
+	<input type="hidden" name="pageid" value="modelos/<?php echo basename( __FILE__ ); ?>" /> 
+	<input type="hidden" name="jsmenuid" value="<?php echo $_POST[ "jsmenuid" ]; ?>" /> 
+	<input class="boton_guardar" type="submit" name="cmd" value="Agregar Procesos" /> 
+</form> 
+<div id="frmVista" class="frmVistaOculta" > 
+
+	<form action="./" method="post">
+		<label for="mesa_ftl">Ver s&oacute;lo procesos de:</label>
+		<?php
+		$def_flr = (isset( $_POST["mesa_ftl"] ) ? $_POST["mesa_ftl"][0] : 0);
+		echo $this->obtenerMesas($def_flr, "mesa_ftl"); 
+		?>
+		<input type="submit" value="Filtrar">
+		<input type="submit" name="nofiltrar" value="Ver todos los datos">
+		<input type="hidden" name="pageid" value="modelos/<?php echo basename( __FILE__ ); ?>" /> 
+		<input type="hidden" name="jsmenuid" value="<?php echo $_POST[ "jsmenuid" ]; ?>" />
+	</form>
+
+	<?php echo Utiles::BarraPaginacion(basename( __FILE__ ), $_POST[ "jsmenuid" ]); ?>
+	<?php echo $this->obtenerTablaConLlaves(); ?>
+	<?php echo Utiles::BarraPaginacion(basename( __FILE__ ), $_POST[ "jsmenuid" ]); ?>
+</div>
+
+<div id="frmUpdate" class="frmVistaOculta">
+	<form action="./" method="post">		
+		
+		<table border="0" class="tbComun" style="width: 100%;"> 
+			<tbody> 
+				<tr> 
+					<th><label for="nombre" class="tituloCargaProcesos">PARA EMPEZAR  SELECCIONA LA MESA</label></th> 
+				</tr> 
+				<tr> 
+					<td>
+						<label></label>
+						<?php echo $this->obtenerMesas(); ?>
+					</td> 
+				</tr> 
+				<tr>
+					<td align="left">
+						<label for="nombre" id="LabelCajaCargaProcesos">Procesos:</label>
+						<textarea name="nombre" id="nombre" rows="10" cols="" style="width: 100%;"><?php echo (isset($_POST["nombre"]) ? $_POST["nombre"] : ""); ?></textarea>
+					</td>
+				</tr>
+				<tr> 
+					<th><label for="separapor" class="labeseparador">Separar cada usuario por:</label></th> 
+				</tr> 
+				<tr>
+					<td align="left">
+						<select id="separapor" name="separapor">
+							<option value="linea">Nueva l&iacute;nea</option>
+							<option value=";">Punto y coma (;)</option>
+						</select>
+					</td>
+				</tr>
+			</tbody> 
+		</table>  
+		<input type="hidden" name="cmd" value="<?php echo md5("cargaMasivaProcesos"); ?>" />
+		<input type="hidden" name="pageid" value="modelos/<?php echo basename( __FILE__ ); ?>" /> 
+		<input type="hidden" name="jsmenuid" value="<?php echo $_POST[ "jsmenuid" ]; ?>" /> 
+		<input class="boton_guardar" type="submit" value="Cargar Procesos" /> 
+		
+	</form>
+</div>
+
+
+<footer class="fotterMQA">
+  <img src="temas/img/mqa.png" width="100" height="45" />
+  <div>&#174; Marca Registrada</div>
+
+</footer>
+<script type="text/javascript">
+//Paginación:
+<?php if( isset($_POST["paginaV"]) || isset($_POST["mesa_ftl"]) ): ?>
+	jQuery("#frmData").hide();
+	jQuery("#frmVista").show();
+<?php endif; ?>
+</script>

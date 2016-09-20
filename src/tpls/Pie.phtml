@@ -1,0 +1,75 @@
+
+<?php // El inicio de este DIV se encuentra en Encabezado.phtml ?>
+</div>
+
+<script>
+jQuery(document).ready(function($){
+	<?php if ( isset( $_POST["jsmenuid"] ) ): ?>
+	dibMenu( <?php echo $_POST["jsmenuid"]; ?> );
+	<?php endif; ?>
+
+	<?php //Recuerda los datos que se enviaron de un formulario ?>
+	<?php $totalArreglo = 0;?>
+	<?php if( isset( $_POST["cmd"] ) ) : ?>
+	<?php 	foreach ( $_POST as $id => $vl ) : ?>
+	<?php		if( is_array( $vl ) ): ?>
+	<?php			$totalArreglo = sizeof( $_POST[ $id ] ); break; ?>
+	<?php 		endif; ?>
+	<?php	endforeach; ?>
+	if( $( "#" + nombreSumaObjs ).length > 0 ) {
+		for(var _ifrms = 0; _ifrms < <?php echo $totalArreglo - 1; ?>; _ifrms++ ){
+			$( "#" + nombreSumaObjs ).trigger( "click" );
+		}
+
+		<?php foreach ( $_POST as $id_p => $vl_p ) : ?>
+		<?php 	if( is_array( $vl_p ) ) : ?>
+		<?php 		foreach( $vl_p as $id_r => $vl_r ) : ?>
+		<?php 		$vlIdObj = ( $id_r == 0 ? "x" : $id_r - 1); ?>
+		<?php 		// Nuevo replace para quitar posibles espacios si llegaron ?>
+		<?php 		$vl_rTmp = trim(preg_replace("/\r\n|\n|\r/", "", $vl_r)); ?>
+		try{ $( "#<?php echo $id_p . '_' . $vlIdObj ?>" ).val('<?php echo $vl_rTmp; ?>'); }catch(e){ /*alert(e);*/ }
+		<?php 		endforeach; ?>
+		<?php 	endif; ?>
+		<?php endforeach; ?>
+				
+	}
+	<?php endif; ?>
+	
+	$(".centrar.msj_capaTexto>div").on("click", function(){
+		$(".msj_texto").fadeOut("slow");
+	});
+	
+	$(".ico_ver").on("click", function(){
+		$( "#frmVista" ).fadeIn("slow");
+		$( "#frmData" ).fadeOut("slow");
+		$( "#frmUpdate" ).fadeOut("slow");
+	});
+
+	$(".ico_agregar").on("click", function(){
+		$( "#frmData" ).fadeIn("slow");
+		$( "#frmVista" ).fadeOut("slow");
+		$( "#frmUpdate" ).fadeOut("slow");
+	});
+
+	$(".ico_actualizar").on("click", function(){
+		$( "#frmUpdate" ).fadeIn("slow");
+		$( "#frmData" ).fadeOut("slow");
+		$( "#frmVista" ).fadeOut("slow");
+	});
+	
+});
+</script>
+
+<script type="text/javascript">
+<!--
+jQuery(".dtViewDel").on("click", function(event){
+	event.preventDefault();
+	var o = jQuery( this );
+	var okDel = confirm("\xBFDesea eliminar este registro?");
+	if(okDel){
+		var frm = o.parent();
+		frm.submit();
+	}
+});
+//-->
+</script>

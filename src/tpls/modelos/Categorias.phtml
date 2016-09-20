@@ -1,0 +1,78 @@
+<?php header('Content-Type: text/html; charset=UTF-8');?>
+<form id="frmData" action="./" method="post" > 
+	<div> 
+		<table border="0" class="tbComun"> 
+			<tbody> 
+				<tr> 
+					<th><label for="nombre_x"></label></th> 
+					<td><input type="text" name="nombre[]" id="nombre_x" class="camposEntrada" placeholder="NUEVA CLASIFICACIÓN"></td> 
+				</tr> 
+			</tbody> 
+		</table> 
+		<table border="0" class="tbComun"> 
+			<tbody> 
+				<tr> 
+					<th><label for="color_x">Color:</label></th> 
+					<td><input type="color" name="color[]" id="color_x" class="camposEntrada"></td> 
+				</tr> 
+			</tbody> 
+		</table> 
+		<table border="0" class="tbComun"> 
+			<tbody> 
+				<tr> 
+					<th><label for="dependencia_x">Dependencia:</label></th> 
+					<td>
+						<?php echo $this->obtenerDependencias(); ?>
+					</td> 
+				</tr> 
+			</tbody> 
+		</table> 
+		<table border="0" class="tbComun"> 
+			<tbody> 
+				<tr> 
+					<th><label for="tiposcategoria_id_x">Tipo:</label></th> 
+					<td>
+						<?php echo $this->obtenerTiposCategorias(); ?>
+					</td> 
+				</tr> 
+			</tbody> 
+		</table>
+		<table border="0" class="tbComun"> 
+			<tbody> 
+				<tr> 
+					<th><label for="orden_x">Orden:</label></th> 
+					<td><input type="number" name="orden[]" id="orden_x" class="camposEntrada" value="100"></td> 
+				</tr> 
+			</tbody> 
+		</table> 
+		<input type="hidden" name="talleres_id[]" id="talleres_id_x" value="1" />
+		
+	</div> 
+	<input type="hidden" name="id[]" id="id_x" value="" /> 
+	<input type="hidden" name="pageid" value="modelos/<?php echo basename( __FILE__ ); ?>" /> 
+	<input type="hidden" name="jsmenuid" value="<?php echo $_POST[ "jsmenuid" ]; ?>" /> 
+	<input class="boton_guardar" type="submit" name="cmd" value="Guardar Categorias" /> 
+</form> 
+<div id="frmVista" class="frmVistaOculta" > 
+	<?php echo Utiles::BarraPaginacion(basename( __FILE__ ), $_POST[ "jsmenuid" ]); ?>
+	<?php echo $this->obtenerTablaConLlaves(); ?>
+	<?php echo Utiles::BarraPaginacion(basename( __FILE__ ), $_POST[ "jsmenuid" ]); ?>
+</div>
+
+
+
+<footer class="fotterMQA">
+  <img src="temas/img/mqa.png" width="100" height="45" />
+  <div>&#174; Marca Registrada</div>
+
+</footer>
+
+<script type="text/javascript">
+//Paginación:
+<?php if( isset($_POST["paginaV"]) ): ?>
+	jQuery("#frmData").hide();
+	jQuery("#frmVista").show();
+<?php endif; ?>
+
+$(".ico_actualizar").hide();
+</script>

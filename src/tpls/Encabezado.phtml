@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8"/>
+		<meta http-equiv="Content-Type" content="<?php echo Config::CHARSET ?>">		
+		<title><?php echo Config::NOMBRE_SITIO ?></title>
+		
+		<link rel='stylesheet' href='./temas/css/principal.css' type='text/css' media='all' />
+		<link rel='stylesheet' href='./temas/css/jqui/jquery-ui.min.css' type='text/css' media='all' />
+		<link rel='stylesheet' href='./temas/css/jqui/jquery-ui.structure.min.css' type='text/css' media='all' />
+		<link rel='stylesheet' href='./temas/css/jqui/jquery-ui.theme.min.css' type='text/css' media='all' />
+		
+		<script type="text/javascript" src="./temas/js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="./temas/js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="./temas/js/utilidades.js"></script>
+		<script type="text/javascript" src="./temas/js/pagemenu.js"></script>
+		<script type="text/javascript" src="./temas/js/mngforms.js"></script>
+		<script type="text/javascript" src="./temas/js/Chart.min.js"></script>
+		
+		<!-- <script type="text/javascript" src="./temas/js/ckeditor/ckeditor.js"></script> -->
+		
+	</head>
+	<body class="<?php echo Config::CLASE_CUERPO ?>">
+	<?php if( strlen( $this->getMensaje() ) > 0 ) : ?>
+	<div class="msj_texto" style="float: left;">
+		<div class="centrar msj_capaTexto">
+			<div>X</div>
+			<?php echo $this->getMensaje(); ?>
+		</div>
+	</div>	
+	<?php endif; ?>
+	<?php if ( Seguridad::isLogin() ) : ?>
+	<?php $uInfo = $_SESSION["usu"]->getNombres() . " " . $_SESSION["usu"]->getApellidos(); ?>
+	<h1 style="display: none;">IHS Web Site Admin</h1>
+	<section style="display: none;" >
+		<h2>Admin</h2>
+		<article>
+			<h3><?php echo $uInfo ?></h3>
+		</article>
+	</section>
+	<div class="capa-superior">
+	<div class="capa-datos-log">
+		<table class="tabla-usrdatos">
+			<tbody>
+				<tr>
+					<td>
+						<div class="capa-currusr">
+							<?php echo $uInfo ?>
+						</div>
+					</td>
+					<td>
+						<div class="capa-curredt">
+							Editar mis datos
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="capa-logout"><a href="./?logout=on">Logout</a></div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="height: 28px"></div>
+	
+	<center>
+	
+		<div class="accesosDirectos">
+	
+			<div class="ad-datos">
+				<table border="0" cellspacing="0" cellpadding="0" >
+					<tbody>
+				    	<tr>
+				      		<td width="100%">
+				      			<div class="ad-optioninfo">
+				      				
+				      				<div class="ad-currOption">
+				      					<div id="top-icono" class="ad-icono">Icono</div>
+				      					<div id="top-texto" class="ad-curtexto">Opcion</div>
+				      				</div>
+				      				
+				      				<div class="ad-menus">
+				      					<script type="text/javascript">
+				      						document.write( pageMenu.render() );
+				      					</script>
+				      				</div>
+				      				
+				      			</div>
+				      		</td>
+				    	</tr>
+					</tbody>
+				</table>
+			</div>
+	
+		</div>
+		
+	</center>
+	
+	<?php if( isset( $_REQUEST["pageid"] ) ) : ?>
+	<?php 	if( $_REQUEST["pageid"] != "Workspace.phtml" ) :?>
+	<div class="menuOpciones">
+	  <div class="ico_ver">
+	    Ver Registros
+	  </div>
+	  <div class="ico_agregar">
+	    Agregar datos
+	  </div>
+	  <div class="ico_actualizar">
+	    Cargar datos
+	  </div>
+	</div>
+	<?php 	endif; ?>
+	<?php endif ; ?>
+	<?php // El fin de este DIV se encuentra en Pie.phtml ?>
+	<div class="contenerdor-p" >	
+	
+	<?php endif; ?>

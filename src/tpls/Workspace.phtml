@@ -1,0 +1,113 @@
+<center>
+  <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8"/>
+	<fieldset class="ContenedorIconos">
+		<legend><b class="TituloHome"></b></legend>
+		
+		<form id="frmPrincipal" action="./" method="post">
+	
+			<div id="irtortas" class="btnWsItem" style="background-image: url(./temas/img/Economy-up-2.png);">
+				<h2>PRELIMINAR</h2>
+				
+			</div>
+		
+		
+
+				<div id="irexportar" class="btnWsItem" style="background-image: url(./temas/img/ark2.png);">
+				<h2>RESULTADOS DE LA CLASIFICACIÓN</h2>
+				
+			</div>
+      
+       <div class="btnWsItem"  onclick="location='Compromiso.php'" style="background-image: url(./temas/img/notas.png);">
+      <h2>COMPROMISO</h2>
+      
+
+    </div>
+      <div class="btnWsItem"  onclick="location='Entrevistas.php'" style="background-image: url(./temas/img/entrevista.png);">
+      <h2>ENTREVISTA</h2>
+     
+
+    </div>
+      
+     <div id="irexportar_entrevistas" class="btnWsItem" style="background-image: url(./temas/img/descargaentrevistas.png);">
+        <h2>ENTREVISTAS</h2>
+       
+      </div> 
+      
+       <div class="btnWsItem"  onclick="location='CategoriaEstrategia.php'" style="background-image: url(./temas/img/estrategia.png);">
+      <h2>CATEGORIA ESTRATEGICA</h2>
+
+
+    </div>
+       <div class="btnWsItem"  onclick="location='CategoriaCliente.php'" style="background-image: url(./temas/img/cliente.png);">
+        <h2>CATEGORIA CLIENTE</h2>
+    </div>
+      
+      <div id="irexportar_indicadores" class="btnWsItem" style="background-image: url(./temas/img/descargaindicadores.png);">
+        <h2>INDICADORES</h2>
+   
+      </div> 
+
+			<input id="pageid" type="hidden" name="pageid" value="Workspace.phtml" />
+		</form>
+    
+     <!--<div class="btnWsItem"  onclick="location='Responsables.php'" style="background-image: url(./temas/img/res.png);">
+      <h2>RESPONSABLES</h2>   
+    </div-->
+   
+    <div class="btnWsItem"  onclick="location='Lumira.php'" style="background-image: url(./temas/img/lumira.png);">
+      <h2>INDICADORES</h2>
+    </div>
+
+    <div id="irbackups" class="btnWsItem" style="background-image: url(./temas/img/backups.png);">
+			<h2>BACKUPS</h2>
+		</div>
+		
+		<div id="iradmin" class="btnWsItem" style="background-image: url(./temas/img/admini.png);">
+			<h2>ADMINISTRAR</h2>
+		</div>
+
+  </fieldset>
+
+  <footer class="fotterMQA">
+    <img src="temas/img/mqa.png" width="100" height="45" />
+    <div>&#174; Marca Registrada</div>
+  </footer>
+</center>
+
+
+
+<script type="text/javascript">
+var escuchadores = function(){
+	jQuery("#irtortas").on("click",function(){
+		jQuery("#pageid").val("MenuTortas.phtml");
+
+		jQuery("#frmPrincipal").submit();
+	});
+
+	jQuery("#irbackups").on("click",function(){
+		jQuery("#pageid").val("Backups.phtml");
+
+		jQuery("#frmPrincipal").submit();
+	});
+
+	jQuery("#iradmin").on("click",function(){
+		jQuery("#pageid").val("Admin.phtml");
+
+		jQuery("#frmPrincipal").submit();
+	});
+
+	jQuery("#irexportar").on("click",function(){
+		location.href = "./index.php?cmd=<?php echo md5("exportarfull"); ?>";
+	});
+   jQuery("#irexportar_entrevistas").on("click",function(){
+  location.href = "./index.php?cmd=<?php echo md5("exportarfullentrevista"); ?>";
+  });
+     jQuery("#irexportar_indicadores").on("click",function(){
+  location.href = "./index.php?cmd=<?php echo md5("exportarfullindicadores"); ?>";
+  });
+};
+
+jQuery(document).ready(function(){
+	escuchadores();
+});
+</script>

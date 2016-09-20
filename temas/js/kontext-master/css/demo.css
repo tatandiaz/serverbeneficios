@@ -1,0 +1,139 @@
+
+.share {
+	position: absolute;
+	bottom: 20px;
+	left: 24px;
+	margin: 0;
+	z-index: 1;
+	font-size: 0.9em;
+}
+
+.credit {
+	position: absolute;
+	bottom: 24px;
+	right: 24px;
+	margin: 0;
+	z-index: 1;
+	font-size: 0.9em;
+}
+
+.credit a {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.layer {
+	text-align: center;
+	text-shadow: 1px 1px 0px rgba( 0, 0, 0, 0.1 );
+	color: #FFF;
+	background-image: url(./fnd_lineas.png);
+	overflow: hidden;
+}
+
+.fndImgBig{
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: 140%;
+    height: 875px;
+    top: -56px;
+    left: -357px;
+    position: absolute;
+    width: 875px;
+    border: solid 3px #FFF;
+    
+    border-radius: 1000px;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.5);
+}
+
+.layer table {
+    position: absolute;
+    right: 0px;
+    height: 74%;
+    width: 65%;
+}
+
+.layer h3 {
+	position: relative;
+	top: 30%;
+	margin: 0;
+	font-size: 3.50em;
+}
+
+.layer p {
+	position: relative;
+	top: 30%;
+	margin: 0;
+	font-size: 15px;
+}
+
+.layer.one {
+	background-color: #dc6c5f;
+}
+
+.layer.two {
+	background-color: #95dc84;
+}
+
+.layer.three {
+	background-color: #64b9d2;
+}
+
+.bullets {
+	position: absolute;
+	width: 100%;
+	bottom: 20px;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+	.bullets li {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		margin: 0 3px;
+
+		background: rgba( 255, 255, 255, 0.5 );
+		box-shadow: 0px 0px 4px rgba( 0, 0, 0, 0.2 );
+		cursor: pointer;
+
+		-webkit-tap-highlight-color: rgba( 0, 0, 0, 0 );
+	}
+
+		.bullets li:hover {
+			background: rgba( 255, 255, 255, 0.8 );
+		}
+
+		.bullets li.active {
+			cursor: default;
+			background: #fff;
+		}
+
+@media screen and (max-width: 400px) {
+	body {
+		font-size: 12px;
+	}
+
+	.layer h2 {
+		font-size: 5em;
+	}
+
+	.bullets li {
+		margin: 0 6px;
+	}
+
+	.credit {
+		bottom: initial;
+		top: 10px;
+		right: 10px;
+	}
+
+	.share,
+	.github-ribbon {
+		display: none;
+	}
+}
+
